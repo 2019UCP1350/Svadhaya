@@ -1,7 +1,7 @@
 require("./models/User");
 const express=require("express");
 const mongoose=require("mongoose");
-const authRoutes=require('./routes/authroutes');
+const authRoutes=require('./routes/authRoutes');
 const bodyParser=require('body-parser');
 const cors=require('cors');
 const path=require("path");
