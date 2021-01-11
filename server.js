@@ -1,9 +1,10 @@
 require("./models/User");
 const express=require("express");
 const mongoose=require("mongoose");
-const authRoutes=require('./routes/authRoutes');
+const authRoutes=require('./routes/authroutes');
 const bodyParser=require('body-parser');
 const cors=require('cors');
+const path=require("path");
 
 const app=express();
 const port=process.env.PORT || 3000;
@@ -30,12 +31,12 @@ mongoose.connection.on('error',(err)=>{
 	console.error('Error conneting monoogoose',err);
 });
 
-app.get('/',(req,res)=>{
-    res.send("Hi there!");
-});
 
 if (process.env.NODE_ENV==="production"){
 	app.use(express.static("client/build"));
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+	  });
 }
 
 app.listen(port || 3000,()=>{
