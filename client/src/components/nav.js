@@ -6,7 +6,7 @@ import logo from "../images/logo.png";
 
 const Nav=({history})=>{
     const{state:{token,username,level},signout,tryLocalLogin} =useContext(AuthContext);
-    useEffect(()=>{tryLocalLogin()},[]);
+    useEffect(()=>{tryLocalLogin()},[tryLocalLogin]);
     const popover = (
         <Popover>
             <Popover.Title >User Info</Popover.Title>
